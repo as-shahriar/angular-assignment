@@ -1,49 +1,58 @@
 <div class="d-flex flex-column align-items-center mt-3">
     <h2 class="my-4">Sign up</h2>
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <strong>Holy guacamole!</strong> You should check in on some of those fields below.
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-    <form class="w-50">
+    <form class="w-50" [formGroup]="signupForm" (ngSubmit)="onSubmit()">
        <div class="row">
         <div class="col col-lg-6 col-12">
             <div class="form-group">
                 <label for="fname">First Name</label>
-                <input class="form-control" type="text"  id="fname">
+                <input class="form-control" [class.is-invalid]="fname && ((fname.invalid && fname.touched) || ( is_submitted && fname.invalid ))" type="text" formControlName="fname"  id="fname">
+                <div class="invalid-feedback">
+                    First name is required.
+                </div>
             </div>
         </div>
         <div class="col col-lg-6 col-12">
             <div class="form-group">
                 <label for="lname">Last Name</label>
-                <input class="form-control" type="text"  id="lname">
+                <input class="form-control" [class.is-invalid]="lname && ((lname.invalid && lname.touched) || ( is_submitted && lname.invalid ))" type="text" formControlName="lname"  id="lname">
+                <div class="invalid-feedback">
+                    Last name is required.
+                </div>
             </div>
         </div>
        </div>
 
         <div class="form-group">
             <label for="email">Email Address</label>
-            <input class="form-control" type="email"  id="email">
+            <input class="form-control is-invalid" [class.is-invalid]="email && ((email.invalid && email.touched) || ( is_submitted && email.invalid ))" type="email" formControlName="email"  id="email">
+            <div class="invalid-feedback">
+                Email address is required.
+            </div>
         </div>
         <div class="form-group">
             <label for="password">Password</label>
-            <input class="form-control" type="password"  id="password">
+            <input class="form-control" [class.is-invalid]="password && ((password.invalid && password.touched) || ( is_submitted && password.invalid ))" type="password" formControlName="password"  id="password">
+            <div class="invalid-feedback">
+                Password is required with minimum 8 characters.
+            </div>
         </div>
-    <div class="form-group">
+    <div class="d-flex justify-content-center">
         <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+            <input class="form-check-input" type="radio" name="role" formControlName="role"  checked="true"  id="exampleRadios1" value="user">
             <label class="form-check-label" for="exampleRadios1">
             User
             </label>
         </div>
         <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+            <input class="form-check-input" type="radio" name="role" formControlName="role"  id="exampleRadios2" value="admin">
             <label class="form-check-label" for="exampleRadios2">
             Admin
             </label>
         </div>
     </div>
-        <input class="btn btn-outline-success" type="submit" value="Sign up">
+    <div *ngIf="role && role.invalid && is_submitted" class="invalid-feedback" style="display: block; text-align: center;">
+        You need to choose a role.
+    </div>
+        <input class="btn btn-outline-success mt-2" type="submit" value="Sign up">
     </form>
 </div>
