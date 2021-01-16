@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { AuthService } from '../../service/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +10,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 export class LoginComponent {
   is_submitted:boolean = false;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder,private service:AuthService) {
    }
 
   loginForm = this.fb.group({
@@ -28,9 +29,15 @@ export class LoginComponent {
   onSubmit(){
     this.is_submitted = true;
     if(!this.loginForm.invalid){
-      console.log(this.loginForm.value);
+      this.service.is_authenticated(this.loginForm.value.email,this.loginForm.value.password).subscribe(
+        (user)=>{
+          console.log(user);
+        }
+      )
+      
+       
     }
-   
+    
   
   }
 }
