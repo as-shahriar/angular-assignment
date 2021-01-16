@@ -1,5 +1,6 @@
 import { Component} from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { PasswordValidator } from 'src/app/shared/validators/password.validator';
 
 @Component({
   selector: 'app-signup',
@@ -15,7 +16,7 @@ export class SignupComponent {
    fname:  ['',Validators.required],
    lname:  ['',Validators.required],
    email : ['',[Validators.required,Validators.email]],
-   password: ['',[Validators.required,Validators.minLength(8)]],
+   password: ['',PasswordValidator],
    role: ['',Validators.required]
 
  })
