@@ -9,6 +9,13 @@ export class AuthService {
   constructor(
     private http: HttpClient) { }
 
+    getAll(){
+      return this.http.get('api/users');
+    }
+    getAllProfile(){
+      return this.http.get('api/profiles');
+    }
+
     is_authenticated(email:string, password:string){
       return this.http.get('api/users').pipe(map( (users:any)=>{
         let user = null;
@@ -24,5 +31,19 @@ export class AuthService {
         return user;
       }
       ));
+    }
+
+
+    signup(user:any){
+      console.log(user);
+      return this.http.post('api/users',user).subscribe(data=>{
+      });
+    }
+
+    createProfile(profile:any){
+      return this.http.post('api/profiles', profile).subscribe(data=>{
+        console.log(data);
+        
+      });
     }
 }

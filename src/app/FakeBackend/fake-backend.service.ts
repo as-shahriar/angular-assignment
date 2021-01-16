@@ -3,22 +3,34 @@
   
   export class FakeBackendService implements InMemoryDbService {
   
-    // In-Memory DB will intercept /api/whatever calls and return data
     createDb() {
       const users = [
-        { id: 1, email: 'admin@admin.com', password: 'admin123', is_admin:true }
-        // add as many data you need
+        { 
+          id: 1, 
+          email: 'admin@admin.com', 
+          password: 'admin123', 
+          is_admin:true, 
+        }
       ]
-      const products = [
-        { id: 1, maker: 'Samsung', model: 'Galaxy'},
-        { id: 2, maker: 'Sony', model: 'Xperia'}
+
+      const profiles = [
+        {
+          id:1,
+          fname: 'Admin',
+          lname: 'shaheeb',
+          date_of_birth: '20-05-1999',
+          gender: 'male',
+          phone: '0171xxxxxx',
+          address: 'Dhaka, Bangladesh',
+          interest: 'Coding & Watching Movies'
+        }
       ]
-      return { users, products } // add as many end-points you want
+      
+      return { users,profiles } 
     }
 
     post(requestInfo: RequestInfo) {
       const collectionName = requestInfo.collectionName;
-      console.log(collectionName);
-      
+      // console.log(collectionName);
     }
   }
