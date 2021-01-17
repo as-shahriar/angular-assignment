@@ -24,7 +24,7 @@
 
         <div class="form-group">
             <label for="email">Email Address</label>
-            <input class="form-control is-invalid" [class.is-invalid]="email && ((email.invalid && email.touched) || ( is_submitted && email.invalid ))" type="email" formControlName="email"  id="email">
+            <input class="form-control" [class.is-invalid]="email && ((email.invalid && email.touched) || ( is_submitted && email.invalid ))" type="email" formControlName="email"  id="email">
             <div class="invalid-feedback">
                 Email address is required.
             </div>

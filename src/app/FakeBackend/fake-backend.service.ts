@@ -17,9 +17,9 @@
         {
           id:1,
           fname: 'Admin',
-          lname: 'shaheeb',
+          lname: 'Shaheeb',
           date_of_birth: '20-05-1999',
-          gender: 'male',
+          gender: 'Male',
           phone: '0171xxxxxx',
           address: 'Dhaka, Bangladesh',
           interest: 'Coding & Watching Movies'
@@ -29,8 +29,12 @@
       return { users,profiles } 
     }
 
-    post(requestInfo: RequestInfo) {
-      const collectionName = requestInfo.collectionName;
-      // console.log(collectionName);
-    }
+    // post(requestInfo: RequestInfo) {
+    //   const collectionName = requestInfo.collectionName;
+    //   // console.log(collectionName);
+    // }
+    // put(requestInfo: RequestInfo) {
+    //   const collectionName = requestInfo.collectionName;
+    //   console.log(collectionName);
+    // }
   }

@@ -20,7 +20,6 @@ export class SignupComponent {
    email : ['',[Validators.required,Validators.email]],
    password: ['',PasswordValidator],
    role: ['',Validators.required]
-
  })
 
  get fname(){
