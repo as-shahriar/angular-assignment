@@ -19,6 +19,9 @@ export class ProfileService {
     getUser(id:number){
       return this.http.get(`api/users/${id}`);
     }
+    getAllUsers(){
+      return this.http.get('api/users');
+    }
     updateProfile(profile:any){
       return this.http.put('api/profiles', profile).subscribe(data=>{
         console.log(data);
