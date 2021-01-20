@@ -11,9 +11,9 @@ import { ProfileService } from '../../service/profile.service';
 })
 export class ProfileComponent {
   constructor(private fb: FormBuilder,private service:ProfileService,private route:ActivatedRoute) { 
-    this.service.getAllProfiles().subscribe(data=>{
-      console.log(data);
-    })
+    // this.service.getAllProfiles().subscribe(data=>{
+    //   console.log(data);
+    // })
   }
   
   is_submitted = false;

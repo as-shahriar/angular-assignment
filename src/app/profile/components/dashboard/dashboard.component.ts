@@ -15,10 +15,20 @@ export class DashboardComponent implements OnInit  {
   constructor(private route:ActivatedRoute) { }
 
   ngOnInit() {
+
+    for(let i=0;i<this.route.snapshot.data['allUserData'].length;i++){
+      if(this.route.snapshot.data['allUserData'][i].is_admin)  continue;
+      this.allUsers.push({
+        id : this.route.snapshot.data['allUserData'][i].id,
+        name : `${this.route.snapshot.data['allProfileData'][i].fname} ${this.route.snapshot.data['allProfileData'][i].lname}`,
+        email: this.route.snapshot.data['allUserData'][i].email,
+      })
+    }
     this.setUserList(0);
   }
 
   users:any[] = []
+  allUsers:any[] = []
   is_sorted:Sort=Sort.normal;
   last_index = 0;
   has_next:boolean = false;
@@ -26,39 +36,38 @@ export class DashboardComponent implements OnInit  {
 
   sort(){  
     if(this.is_sorted===Sort.normal){
-      this.users.sort((a, b) => (a.name > b.name) ? 1 : -1);
+      this.allUsers.sort((a, b) => (a.name > b.name) ? 1 : -1);
       this.is_sorted = Sort.asc;
     }
     else if(this.is_sorted===Sort.asc){
-      this.users.sort((a, b) => (a.name > b.name) ? -1 : 1);
+      this.allUsers.sort((a, b) => (a.name > b.name) ? -1 : 1);
       this.is_sorted = Sort.desc;
     }
     else{
-      this.users.sort((a, b) => (a.id > b.id) ? 1 : -1);
+      this.allUsers.sort((a, b) => (a.id > b.id) ? 1 : -1);
       this.is_sorted = Sort.normal;
     }
+    this.setUserList(0);
   }
 
- 
+
   setUserList(start:number){
     this.users = []
-    let size = 1, i = start;
-    let limit = this.route.snapshot.data['allUserData'].length;
-    limit = (limit> start+11)? start+11:limit;
-    while(size<limit && i<limit){
-      if(this.route.snapshot.data['allUserData'][i].is_admin) {i++; continue;}
-      let user = {
-          id : this.route.snapshot.data['allUserData'][i].id,
-          name : `${this.route.snapshot.data['allProfileData'][i].fname} ${this.route.snapshot.data['allProfileData'][i].lname}`,
-          email: this.route.snapshot.data['allUserData'][i].email,
-      }
-      this.users.push(user);
-      i++;
-      size++;
-    }
-    this.last_index = i;
+    let end = start+10;
+    let limit = this.allUsers.length;
+    
+    this.has_next = (limit>end)? true : false;
+    this.has_previous = (start!=0)? true : false; 
+    limit = (limit> end)? end:limit;
+  
+    this.users = this.allUsers.slice(start,end);
+    this.last_index = end;
   }
+
   nextPage(){
     this.setUserList(this.last_index);
+  }
+  previousPage(){
+    this.setUserList(this.last_index-20);
   }
 }
