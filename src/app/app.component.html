@@ -6,19 +6,19 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav ml-auto">
         
-        <li class="nav-item" *ngIf="!is_logedin" routerLinkActive="active">
+        <li class="nav-item" *ngIf="!isLogedin()" routerLinkActive="active">
           <a class="nav-link"  routerLink="/auth/login">Login</a>
         </li>
-        <li class="nav-item" *ngIf="!is_logedin" routerLinkActive="active">
+        <li class="nav-item" *ngIf="!isLogedin()" routerLinkActive="active">
           <a class="nav-link" routerLink="/auth/signup">Sign up</a>
         </li>
-        <li class="nav-item" *ngIf="is_logedin && is_admin">
+        <li class="nav-item" *ngIf="isLogedin() && isAdmin()">
             <a class="nav-link"  routerLink="/user/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">DashBoard</a>
         </li>
-        <li class="nav-item" *ngIf="is_logedin">
+        <li class="nav-item" *ngIf="isLogedin()">
           <a class="nav-link"  routerLink="/user" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Profile</a>
       </li>
-      <li class="nav-item" *ngIf="is_logedin" >
+      <li class="nav-item" *ngIf="isLogedin()" >
         <a class="nav-link"  routerLink="/auth/login"  (click)="logout()">Logout</a>
     </li>
        

@@ -8,17 +8,21 @@ import { SharedService } from './shared/service/shared.service';
 })
 
 
-export class AppComponent implements OnInit {
+export class AppComponent {
 
   constructor(private service:SharedService){}
-  ngOnInit(): void {
-    this.is_logedin = this.service.is_logedin();
-    this.is_admin = this.service.is_admin();
-  }
+
 
   title = 'Angular';
-  is_logedin = false;
-  is_admin = false;
+
+
+  isLogedin(){
+    return this.service.is_logedin();
+  }
+  isAdmin(){
+    return this.service.is_admin();
+  }
+
   logout(){
     this.is_logedin = false;
     this.is_admin = false;
