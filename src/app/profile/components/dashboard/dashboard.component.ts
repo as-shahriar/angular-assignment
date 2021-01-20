@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ProfileService } from '../../service/profile.service';
 import { Sort } from './sort.enums';
 
 @Component({
@@ -12,7 +13,7 @@ import { Sort } from './sort.enums';
 export class DashboardComponent implements OnInit  {
   
 
-  constructor(private route:ActivatedRoute) { }
+  constructor(private route:ActivatedRoute,private service:ProfileService ) { }
 
   ngOnInit() {
 
@@ -33,6 +34,7 @@ export class DashboardComponent implements OnInit  {
   last_index = 0;
   has_next:boolean = false;
   has_previous:boolean = false;
+  on_edit  = false;
 
   sort(){  
     if(this.is_sorted===Sort.normal){
@@ -69,5 +71,18 @@ export class DashboardComponent implements OnInit  {
   }
   previousPage(){
     this.setUserList(this.last_index-20);
+  }
+
+  onDelete(id:number){
+    this.users = this.users.filter(user=>{
+        return user.id !== id;
+    })
+    this.service.onDelete(id);
+  }
+  onEdit(){
+    this.on_edit = true;
+  }
+  onClose(){
+    this.on_edit = false;
   }
 }

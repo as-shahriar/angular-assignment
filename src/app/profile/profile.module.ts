@@ -7,12 +7,13 @@ import { ProfileService } from './service/profile.service';
 import { ProfileResolver } from './resolver/profile.resolver';
 import { UserResolver } from './resolver/user.resolver';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { ModalComponent } from './components/modal/modal.component';
 
 
 
 
 @NgModule({
-  declarations: [ProfileComponent, DashboardComponent],
+  declarations: [ProfileComponent, DashboardComponent, ModalComponent],
   imports: [
     CommonModule,
     ProfileRoutingModule,

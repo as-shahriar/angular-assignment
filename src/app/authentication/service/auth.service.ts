@@ -38,17 +38,21 @@ export class AuthService {
 
 
     signup(user:any){
-      console.log(user);
       return this.http.post('api/users',user).subscribe(data=>{
       });
     }
 
     createProfile(profile:any){
       return this.http.post('api/profiles', profile).subscribe(data=>{
-        console.log(data);
-        
       });
     }
 
-  
+    isUniqueEmail(email:string){
+     this.http.get('api/users').subscribe((users:any)=>{
+        users.every((user:any)=>{
+          console.log(user);
+        })
+        
+     })
+    }
 }

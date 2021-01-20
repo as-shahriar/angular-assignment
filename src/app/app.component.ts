@@ -24,8 +24,6 @@ export class AppComponent {
   }
 
   logout(){
-    this.is_logedin = false;
-    this.is_admin = false;
     localStorage.removeItem('user');
   }
 

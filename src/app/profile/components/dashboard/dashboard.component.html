@@ -15,8 +15,8 @@
           <td>{{user.email}}</td>
           <td>
               <div class="d-flex justify-content-center">
-              <i class="fa fa-pencil-square-o mr-3 pointer" aria-hidden="true"></i>
-              <i class="fa fa-trash-o ml-3 pointer" aria-hidden="true"></i>
+              <i class="fa fa-pencil-square-o mr-3 pointer p-1" aria-hidden="true" (click)="onEdit()"></i>
+              <i class="fa fa-trash-o ml-3 pointer p-1" (click)="onDelete(user.id)" aria-hidden="true"></i>
           </div>
           </td>
       </tr>
@@ -35,5 +35,8 @@
       </li>
     </ul>
   </nav></div>
-  
+
+
+
+  <modal [modal-state]="on_edit" (modalStateChange)="onClose()"></modal>
  

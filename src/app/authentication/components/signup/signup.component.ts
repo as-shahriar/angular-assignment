@@ -39,9 +39,10 @@ get role(){
 }
 
 onSubmit(){
+    this.service.isUniqueEmail(this.signupForm.value.email);
+  
     this.is_submitted = true;
     if(!this.signupForm.invalid){
-    console.log(this.signupForm.value);
     let is_admin = (this.signupForm.value.role==='admin')? true:false;
     this.service.signup({  email: this.signupForm.value.email, password: this.signupForm.value.password, is_admin:is_admin });
     this.service.createProfile({
