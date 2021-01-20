@@ -14,8 +14,7 @@ import { SharedModule } from '../shared/shared.module';
   imports: [
     CommonModule,
     AuthenticationRoutingModule,
-    ReactiveFormsModule,
-    SharedModule
+    ReactiveFormsModule
   ],
   providers: [AuthService],
 })

@@ -19,15 +19,17 @@ export class AuthService {
     is_authenticated(email:string, password:string){
       return this.http.get('api/users').pipe(map( (users:any)=>{
         let user = null;
-        users.forEach((_user:any) => {
+        users.every((_user:any) => {
           if( _user.email === email && _user.password === password ){
             user = { 
               id: _user.id,
               is_admin: _user.is_admin
             }
-            return;
+            return false;
           }
+          return true;
         });
+        localStorage.setItem('user',JSON.stringify(user));
         return user;
       }
       ));
@@ -47,4 +49,6 @@ export class AuthService {
         
       });
     }
+
+  
 }

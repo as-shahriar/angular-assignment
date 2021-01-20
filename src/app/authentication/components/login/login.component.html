@@ -1,5 +1,8 @@
 <div class="d-flex flex-column align-items-center mt-3">
     <h2 class="my-4">Login</h2>
+    <div class="alert alert-danger" role="alert" *ngIf="error">
+        Invalid Credentials. Try Again.
+      </div>
     <form class="w-50" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
             <label for="email">Email Address</label>

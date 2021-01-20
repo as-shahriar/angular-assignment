@@ -6,6 +6,8 @@ import { AllProfilesResolver } from './resolver/all-profiles.resolver';
 import { AllUsersResolver } from './resolver/all-users.resolver';
 import { ProfileResolver } from './resolver/profile.resolver';
 import { UserResolver } from './resolver/user.resolver';
+import { AdminAuthguard } from './service/adminauthguard.service';
+import { AuthguardService } from './service/authguard.service';
 
 
 const routes: Routes = [
@@ -15,7 +17,8 @@ const routes: Routes = [
       resolve: {
         profileData : ProfileResolver,
         userData: UserResolver
-      }
+      },
+      canActivate: [AuthguardService]
     },
     {
       path:'dashboard',
@@ -23,7 +26,8 @@ const routes: Routes = [
       resolve: {
         allProfileData : AllProfilesResolver,
         allUserData: AllUsersResolver
-      }
+      },
+      canActivate: [AdminAuthguard]
     }
   ];
 

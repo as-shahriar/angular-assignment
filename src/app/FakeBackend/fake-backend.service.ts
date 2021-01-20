@@ -9,11 +9,11 @@
           id: 1, 
           email: 'admin@admin.com', 
           password: 'admin123', 
-          is_admin:false, 
+          is_admin:true, 
         },
         { 
           id: 2, 
-          email: 'admin@admin.com', 
+          email: 'admin2@admin.com', 
           password: 'admin123', 
           is_admin:false, 
         },
