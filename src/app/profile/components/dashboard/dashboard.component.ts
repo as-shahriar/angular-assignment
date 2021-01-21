@@ -35,6 +35,7 @@ export class DashboardComponent implements OnInit  {
   has_next:boolean = false;
   has_previous:boolean = false;
   on_edit  = false;
+  userID:number = 0;
 
   sort(){  
     if(this.is_sorted===Sort.normal){
@@ -79,10 +80,21 @@ export class DashboardComponent implements OnInit  {
     })
     this.service.onDelete(id);
   }
-  onEdit(){
+  onEdit(id:number){
+    this.userID = id;
     this.on_edit = true;
   }
   onClose(){
     this.on_edit = false;
+  }
+
+  onUserUpdate(userUpdate){
+    this.users.forEach(user => {
+      if(user.id === userUpdate.id){
+        user.name = `${userUpdate.fname} ${userUpdate.lname}`;
+        user.email = userUpdate.email;
+      }
+      
+    });
   }
 }

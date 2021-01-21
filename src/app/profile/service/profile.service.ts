@@ -24,9 +24,7 @@ export class ProfileService {
       return this.http.get('api/users');
     }
     updateProfile(profile:any){
-      return this.http.put('api/profiles', profile).subscribe(data=>{
-        console.log(data);
-      });
+      return this.http.put('api/profiles', profile).subscribe();
     }
     onDelete(id:number){
       this.http.delete(`api/users/${id}`).subscribe(e=>{

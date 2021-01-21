@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { SharedService } from 'src/app/shared/service/shared.service';
 import { PasswordValidator } from 'src/app/shared/validators/password.validator';
 import { ProfileService } from '../../service/profile.service';
 
@@ -10,11 +11,7 @@ import { ProfileService } from '../../service/profile.service';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent {
-  constructor(private fb: FormBuilder,private service:ProfileService,private route:ActivatedRoute) { 
-    // this.service.getAllProfiles().subscribe(data=>{
-    //   console.log(data);
-    // })
-  }
+  constructor(private fb: FormBuilder,private service:ProfileService,private route:ActivatedRoute,private sharedService:SharedService) {   }
   
   is_submitted = false;
   is_editable = false;
@@ -49,7 +46,7 @@ export class ProfileComponent {
  onSubmit(){
   this.is_editable = false;
   let data = this.profileForm.value;
-  data.id = 1
+  data.id = this.sharedService.getUser().id;
   this.service.updateProfile(data);
  }
  enableEdit(){

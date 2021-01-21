@@ -7,10 +7,14 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { FakeBackendService } from './FakeBackend/fake-backend.service';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
+import { Page404Component } from './components/page404/page404.component';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    Page404Component,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
