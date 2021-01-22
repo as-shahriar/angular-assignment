@@ -47,12 +47,4 @@ export class AuthService {
       });
     }
 
-    isUniqueEmail(email:string){
-     this.http.get('api/users').subscribe((users:any)=>{
-        users.every((user:any)=>{
-          console.log(user);
-        })
-        
-     })
-    }
 }

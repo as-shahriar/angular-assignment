@@ -350,13 +350,4 @@
       
       return { users,profiles } 
     }
-
-    // post(requestInfo: RequestInfo) {
-    //   const collectionName = requestInfo.collectionName;
-    //   // console.log(collectionName);
-    // }
-    // put(requestInfo: RequestInfo) {
-    //   const collectionName = requestInfo.collectionName;
-    //   console.log(collectionName);
-    // }
   }

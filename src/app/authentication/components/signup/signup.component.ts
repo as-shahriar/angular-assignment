@@ -39,7 +39,6 @@ get role(){
 }
 
 onSubmit(){
-    this.service.isUniqueEmail(this.signupForm.value.email);
   
     this.is_submitted = true;
     if(!this.signupForm.invalid){
@@ -54,11 +53,11 @@ onSubmit(){
       address: null,
       interest: null,
     });
-    this.router.navigate(['auth','login']);
+    // this.router.navigate(['auth','login']);
   }
 }
 get(){
-  this.service.getAllProfile().subscribe(data=>{
+  this.service.getAll().subscribe(data=>{
     console.log(data);
     
   })
