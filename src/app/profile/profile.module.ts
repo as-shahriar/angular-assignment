@@ -8,12 +8,18 @@ import { ProfileResolver } from './resolver/profile.resolver';
 import { UserResolver } from './resolver/user.resolver';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ModalComponent } from './components/modal/modal.component';
+import { CustomPipe } from './custom.pipe';
 
 
 
 
 @NgModule({
-  declarations: [ProfileComponent, DashboardComponent, ModalComponent],
+  declarations: [
+    ProfileComponent, 
+    DashboardComponent, 
+    ModalComponent,
+    CustomPipe
+  ],
   imports: [
     CommonModule,
     ProfileRoutingModule,

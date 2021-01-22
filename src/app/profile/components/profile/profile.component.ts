@@ -18,7 +18,7 @@ export class ProfileComponent  {
     private sharedService:SharedService) {   }
   
 
-  
+  userID = this.route.snapshot.data['userData'].id;
   is_submitted = false;
   is_editable = false;
   profileForm = this.fb.group({

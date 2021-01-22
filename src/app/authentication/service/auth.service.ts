@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {map} from 'rxjs/operators';
+import {map, mergeMap} from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
@@ -17,7 +17,8 @@ export class AuthService {
     }
 
     is_authenticated(email:string, password:string){
-      return this.http.get('api/users').pipe(map( (users:any)=>{
+      let query = email.split("@")[0];
+      return this.http.get(`api/users/?email=${query}`).pipe(map( (users:any)=>{
         let user = null;
         users.every((_user:any) => {
           if( _user.email === email && _user.password === password ){
@@ -38,13 +39,11 @@ export class AuthService {
 
 
     signup(user:any){
-      return this.http.post('api/users',user).subscribe(data=>{
-      });
+      return this.http.post('api/users',user);     
     }
 
     createProfile(profile:any){
-      return this.http.post('api/profiles', profile).subscribe(data=>{
-      });
+      return this.http.post('api/profiles', profile);
     }
 
 }

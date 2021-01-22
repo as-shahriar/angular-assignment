@@ -1,6 +1,9 @@
 <div class="d-flex justify-content-between mt-4">
-    <h2 >Profile</h2>
-    <input class="btn btn-outline-info" *ngIf="!is_editable" (click)="enableEdit()" type="submit" value="Edit"/>
+    <h2>Profile</h2>
+    <div class="d-flex align-items-center">
+        <span class="mr-2">Initial: {{fname.value | Initial: lname.value : userID}}</span>
+        <input class="btn btn-outline-info" *ngIf="!is_editable" (click)="enableEdit()" type="submit" value="Edit"/>
+    </div>
 </div>
 <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
 <div class="d-flex flex-column align-items-center mt-4">

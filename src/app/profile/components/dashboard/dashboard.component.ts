@@ -16,7 +16,6 @@ export class DashboardComponent implements OnInit  {
   constructor(private route:ActivatedRoute,private service:ProfileService ) { }
 
   ngOnInit() {
-
     for(let i=0;i<this.route.snapshot.data['allUserData'].length;i++){
       if(this.route.snapshot.data['allUserData'][i].is_admin)  continue;
       this.allUsers.push({
