@@ -1,17 +1,23 @@
-import { Component } from '@angular/core';
+import { DatePipe } from '@angular/common';
+import { AfterViewInit, Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { SharedService } from 'src/app/shared/service/shared.service';
 import { PasswordValidator } from 'src/app/shared/validators/password.validator';
 import { ProfileService } from '../../service/profile.service';
-
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
-export class ProfileComponent {
-  constructor(private fb: FormBuilder,private service:ProfileService,private route:ActivatedRoute,private sharedService:SharedService) {   }
+export class ProfileComponent  {
+  constructor(
+    private fb: FormBuilder,
+    private service:ProfileService,
+    private route:ActivatedRoute,
+    private sharedService:SharedService) {   }
+  
+
   
   is_submitted = false;
   is_editable = false;
@@ -41,6 +47,9 @@ export class ProfileComponent {
  }
  get gender(){
   return this.profileForm.get('gender');
+}
+get date_of_birth(){
+  return this.profileForm.get('date_of_birth');
 }
 
  onSubmit(){

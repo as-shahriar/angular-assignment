@@ -92,7 +92,6 @@ export class DashboardComponent implements OnInit  {
     this.users.forEach(user => {
       if(user.id === userUpdate.id){
         user.name = `${userUpdate.fname} ${userUpdate.lname}`;
-        user.email = userUpdate.email;
       }
       
     });

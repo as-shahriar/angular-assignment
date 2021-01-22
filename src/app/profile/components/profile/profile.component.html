@@ -46,7 +46,22 @@
             <div class="col col-lg-6 col-12">
                 <div class="form-group">
                     <label for="date_of_birth">Date of Birth</label>
-                    <input class="form-control" [attr.disabled]="(is_editable)?null:true" type="text" formControlName="date_of_birth"  id="date_of_birth">
+                    <input 
+                    type="date"
+                    class="form-control" 
+                    [attr.disabled]="(is_editable)?null:true" 
+                    [attr.hidden]="(is_editable)?null:true"  
+                    formControlName="date_of_birth"  
+                    id="date_of_birth"
+                    value="2012-05-05"
+                    >
+
+                    <input  
+                    class="form-control" 
+                    [attr.hidden]="(is_editable)?true:null" 
+                    type="text" disabled *ngIf="date_of_birth" 
+                    value="{{date_of_birth.value | date:'mediumDate'}}">
+
                 </div>
             </div>
             <div class="col col-lg-6 col-12">

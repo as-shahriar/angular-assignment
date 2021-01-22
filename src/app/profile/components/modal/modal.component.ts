@@ -84,8 +84,7 @@ export class ModalComponent implements OnChanges   {
     this.updatedUser.emit({
       id: data.id,
       fname: data.fname,
-      lname: data.lname,
-      email: data.email
+      lname: data.lname
     });
   }
   

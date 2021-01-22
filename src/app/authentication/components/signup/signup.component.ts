@@ -53,16 +53,10 @@ onSubmit(){
       address: null,
       interest: null,
     });
-    // this.router.navigate(['auth','login']);
+    this.router.navigate(['auth','login']);
   }
 }
-get(){
-  this.service.getAll().subscribe(data=>{
-    console.log(data);
-    
-  })
 
-}
   
 
 }
