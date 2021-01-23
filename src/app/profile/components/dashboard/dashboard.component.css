@@ -4,3 +4,7 @@
 .title > th {
   user-select: none;
 }
+
+.fa {
+  color: #11111175;
+}
