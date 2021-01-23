@@ -19,13 +19,11 @@ export class ProfileComponent  {
   
 
   userID = this.route.snapshot.data['userData'].id;
-  is_submitted = false;
   is_editable = false;
   profileForm = this.fb.group({
     fname:  [this.route.snapshot.data['profileData'].fname,Validators.required],
     lname:  [this.route.snapshot.data['profileData'].lname,Validators.required],
     email : [this.route.snapshot.data['userData'].email,[Validators.required,Validators.email]],
-    password: ['',PasswordValidator],
     date_of_birth: [this.route.snapshot.data['profileData'].date_of_birth],
     gender: [this.route.snapshot.data['profileData'].gender],
     address: [this.route.snapshot.data['profileData'].address],
@@ -42,9 +40,7 @@ export class ProfileComponent  {
  get email(){
    return this.profileForm.get('email');
  }
- get password(){
-   return this.profileForm.get('password');
- }
+
  get gender(){
   return this.profileForm.get('gender');
 }
@@ -53,10 +49,13 @@ get date_of_birth(){
 }
 
  onSubmit(){
-  this.is_editable = false;
-  let data = this.profileForm.value;
-  data.id = this.sharedService.getUser().id;
-  this.service.updateProfile(data);
+  if(!this.profileForm.invalid){
+    this.is_editable = false;
+    let data = this.profileForm.value;
+    data.id = this.sharedService.getUser().id;
+    this.service.updateProfile(data);
+  }
+  
  }
  enableEdit(){
    this.is_editable = true;

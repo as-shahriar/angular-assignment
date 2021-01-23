@@ -12,7 +12,7 @@
             <div class="col col-lg-6 col-12">
                 <div class="form-group">
                     <label for="fname">First Name</label>
-                    <input class="form-control"  [attr.disabled]="(is_editable)?null:true" [class.is-invalid]="fname && ((fname.invalid && fname.touched) || ( is_submitted && fname.invalid ))" type="text" formControlName="fname"  id="fname">
+                    <input class="form-control"  [attr.disabled]="(is_editable)?null:true" [class.is-invalid]="fname && fname.invalid && fname.touched" type="text" formControlName="fname"  id="fname">
                     <div class="invalid-feedback">
                         First name is required.
                     </div>
@@ -21,7 +21,7 @@
             <div class="col col-lg-6 col-12">
                 <div class="form-group">
                     <label for="lname">Last Name</label>
-                    <input class="form-control" [attr.disabled]="(is_editable)?null:true" [class.is-invalid]="lname && ((lname.invalid && lname.touched) || ( is_submitted && lname.invalid ))" type="text" formControlName="lname"  id="lname">
+                    <input class="form-control" [attr.disabled]="(is_editable)?null:true" [class.is-invalid]="lname && lname.invalid && lname.touched" type="text" formControlName="lname"  id="lname">
                     <div class="invalid-feedback">
                         Last name is required.
                     </div>
@@ -32,7 +32,7 @@
             <div class="col col-lg-6 col-12">
                 <div class="form-group">
                     <label for="email">Email Address</label>
-                    <input class="form-control" [attr.disabled]="(is_editable)?null:true" [class.is-invalid]="email && ((email.invalid && email.touched) || ( is_submitted && email.invalid ))" type="email" formControlName="email"  id="email">
+                    <input class="form-control" [attr.disabled]="(is_editable)?null:true" [class.is-invalid]="email && email.invalid && email.touched" type="email" formControlName="email"  id="email">
                     <div class="invalid-feedback">
                         Email address is required.
                     </div>

@@ -9,6 +9,7 @@ import { UserResolver } from './resolver/user.resolver';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { CustomPipe } from './custom.pipe';
+import { CustomDirective } from './custom.directive';
 
 
 
@@ -18,7 +19,8 @@ import { CustomPipe } from './custom.pipe';
     ProfileComponent, 
     DashboardComponent, 
     ModalComponent,
-    CustomPipe
+    CustomPipe,
+    CustomDirective
   ],
   imports: [
     CommonModule,
