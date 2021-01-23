@@ -44,38 +44,39 @@ onSubmit(){
     if(!this.signupForm.invalid){
     let is_admin = (this.signupForm.value.role==='admin')? true:false;
 
-    this.service.signup(
-      {  
-        email: this.signupForm.value.email,
-        password: this.signupForm.value.password, 
-        is_admin: is_admin 
-      }
-    ).subscribe(user=>{
-      console.log(user);
-      
-      if(user){
-        this.service.createProfile({
-          fname: this.signupForm.value.fname,
-          lname:this.signupForm.value.lname,
-          date_of_birth: null,
-          gender: null,
-          phone: null,
-          address: null,
-          interest: null,
-        }).subscribe(profile=>{
-          console.log(profile);
-          
-          if(profile){
-            this.router.navigate(['auth','login']);
-          }
-        })
-      }
+    this.service.isUnique(this.signupForm.value.email).
+    subscribe(isUnique=>{
+        if(isUnique){
+            this.service.signup({  
+                  email: this.signupForm.value.email,
+                  password: this.signupForm.value.password, 
+                  is_admin: is_admin 
+                }).
+                subscribe(user=>{
+                    if(user){
+                        this.service.createProfile({
+                            fname: this.signupForm.value.fname,
+                            lname:this.signupForm.value.lname,
+                            date_of_birth: null,
+                            gender: null,
+                            phone: null,
+                            address: null,
+                            interest: null,
+                        }).
+                        subscribe(profile=>{
+                            if(profile){
+                                this.router.navigate(['auth','login']);
+                            }
+                        })
+                    }
+                })
+        }
+        else{
+            this.email.setErrors({
+              notUnique:true
+            });
+        }
     })
-
-    
   }
 }
-
-  
-
 }

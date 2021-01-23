@@ -26,7 +26,8 @@
             <label for="email">Email Address</label>
             <input class="form-control"  [class.is-invalid]="email && ((email.invalid && email.touched) || ( is_submitted && email.invalid ))" type="email" formControlName="email"  id="email">
             <div class="invalid-feedback">
-                Email address is required.
+                <span *ngIf="email.errors && !email.errors.notUnique"> Email address is required.</span>
+                <span *ngIf="email.errors && email.errors.notUnique">Email is already exists.</span>
             </div>
         </div>
         <div class="form-group">

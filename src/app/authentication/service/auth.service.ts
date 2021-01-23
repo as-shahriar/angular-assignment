@@ -36,10 +36,28 @@ export class AuthService {
       ));
     }
     
-
+    isUnique(email){
+      let query = email.split("@")[0];
+      let isUnique = true;
+      return this.http.get(`api/users/?email=${query}`).pipe(
+        map((data:any)=>{
+          data.every((_user:any)=>{
+             if(_user.email===email){
+               isUnique = false;
+               return false;
+             }
+             else{
+               return true;
+             }
+            
+          })
+          if(isUnique) return true;
+          return false;
+    }))
+  }
 
     signup(user:any){
-      return this.http.post('api/users',user);     
+        return this.http.post(`api/users`,user);
     }
 
     createProfile(profile:any){
