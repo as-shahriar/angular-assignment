@@ -77,7 +77,14 @@ export class DashboardComponent implements OnInit  {
     this.users = this.users.filter(user=>{
         return user.id !== id;
     })
+    this.allUsers = this.allUsers.filter(user=>{
+      return user.id !== id;
+    })
+    if(this.users.length === 0){
+      this.setUserList(0);
+    }
     this.service.onDelete(id);
+
   }
   onEdit(id:number){
     this.userID = id;
